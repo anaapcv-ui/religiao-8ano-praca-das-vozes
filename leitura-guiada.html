@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Praça das Vozes — Leitura Guiada | Ensino Religioso 8º ano</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0e1430;color:#eef2fb;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;font-size:18px;line-height:1.65}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 90px}
+a{color:#6fcf97}
+header.top{border-bottom:2px solid #f2b84b;padding:24px 0 14px;text-align:center}
+.mast{margin:0;font-size:clamp(28px,6.5vw,52px);line-height:1.05;letter-spacing:.02em;color:#f2b84b;text-transform:uppercase;font-weight:800}
+.mast .sub{display:block;font-size:.30em;letter-spacing:.28em;font-weight:400;margin-top:12px;color:#9aa6c9;text-transform:uppercase}
+.faixa{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-family:'Courier New',monospace;font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;border-top:1px solid #2a3566;border-bottom:1px solid #2a3566;margin-top:14px;padding:8px 0;color:#9aa6c9}
+.selo{display:inline-block;background:#f2b84b;color:#0e1430;font-family:'Courier New',monospace;font-size:11.5px;letter-spacing:.14em;
+  padding:6px 13px;border-radius:3px;text-transform:uppercase;font-weight:700;margin-top:14px}
+nav.abas{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 0 4px}
+nav.abas a{font-family:'Courier New',monospace;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+  color:#eef2fb;border:1px solid #2a3566;background:#161d3e;padding:9px 13px;border-radius:3px}
+nav.abas a.atual{background:#f2b84b;color:#0e1430;border-color:#f2b84b;font-weight:700}
+nav.abas a:hover{background:#6fcf97;color:#0e1430;border-color:#6fcf97}
+.painel{border:1px solid #2a3566;background:#161d3e;padding:12px 14px;margin:18px 0 22px;display:flex;flex-wrap:wrap;
+  gap:10px;align-items:center;justify-content:space-between;border-radius:4px}
+.painel .status{font-family:'Courier New',monospace;font-size:12.5px;color:#9aa6c9}
+.painel .btns{display:flex;gap:7px;flex-wrap:wrap}
+button{font-family:'Courier New',monospace;font-size:13px;cursor:pointer;border:1px solid #2a3566;background:#161d3e;color:#eef2fb;
+  padding:9px 13px;border-radius:3px}
+button:hover{background:#6fcf97;color:#0e1430;border-color:#6fcf97}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.principal{background:#f2b84b;color:#0e1430;border-color:#f2b84b;font-weight:700}
+input,select,textarea{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif}
+.barra{height:14px;border:1px solid #2a3566;background:#161d3e;border-radius:8px;overflow:hidden}
+.barra i{display:block;height:100%;background:linear-gradient(90deg,#f2b84b,#6fcf97);width:0;transition:width .4s}
+.progresso p{font-family:'Courier New',monospace;font-size:12.5px;margin:7px 0 22px;color:#9aa6c9}
+.aviso-box{font-family:'Courier New',monospace;font-size:13px;background:#161d3e;border:1px solid #2a3566;border-left:4px solid #f2b84b;
+  padding:12px 14px;border-radius:4px;line-height:1.6}
+.secao-tit{border-bottom:2px solid #f2b84b;margin:34px 0 16px;padding-bottom:7px;font-size:25px;color:#f2b84b}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.overlay.on{display:flex}
+.modal{background:#161d3e;border:2px solid #f2b84b;max-width:440px;width:100%;padding:22px;border-radius:6px}
+.modal h3{margin:0 0 10px;font-size:21px;color:#f2b84b}
+.modal p{margin:0 0 16px}
+.modal .acoes{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.rodape{border-top:2px solid #2a3566;margin-top:34px;padding-top:16px;display:flex;flex-wrap:wrap;gap:12px;
+  justify-content:space-between;align-items:center;font-family:'Courier New',monospace;font-size:12.5px;color:#9aa6c9}
+.rodape a{color:#eef2fb;text-decoration:none;border:1px solid #2a3566;background:#161d3e;padding:10px 15px;
+  border-radius:3px;text-transform:uppercase;letter-spacing:.06em}
+.rodape a:hover{background:#f2b84b;color:#0e1430;border-color:#f2b84b}
+.tabela-wrap{overflow-x:auto}
+table.cob{width:100%;border-collapse:collapse;background:#161d3e;font-size:16px}
+table.cob th,table.cob td{border:1px solid #2a3566;padding:9px 11px;text-align:left}
+table.cob th{background:#1d2650;font-family:'Courier New',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#f2b84b}
+.postit{background:#f2dda0;color:#2a2410;border-radius:3px;box-shadow:3px 4px 0 rgba(0,0,0,.35);padding:16px 18px;
+  transform:rotate(-.5deg);margin:14px 0}
+.postit b{display:block;font-family:'Courier New',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.postit code{background:#fff;border:1px dashed #6b5f2a;padding:2px 7px;font-size:15px;border-radius:2px}
+@media(max-width:620px){body{font-size:17px}}
+
+.bloco{border:1px solid #2a3566;background:#161d3e;margin:0 0 22px;border-radius:5px;overflow:hidden}
+.bloco.trancado{opacity:.5}
+.bloco>.cab{display:flex;gap:12px;align-items:baseline;padding:14px 18px;border-bottom:1px solid #2a3566;background:#1d2650;flex-wrap:wrap}
+.bloco .num{font-family:'Courier New',monospace;font-size:11.5px;letter-spacing:.13em;color:#0e1430;background:#f2b84b;padding:5px 10px;border-radius:3px;white-space:nowrap;font-weight:700}
+.bloco h2{margin:0;font-size:22px;color:#6fcf97}
+.bloco .pag{font-family:'Courier New',monospace;font-size:11.5px;color:#9aa6c9;margin-left:auto;white-space:nowrap}
+.corpo{padding:18px 20px}
+.corpo p{margin:0 0 14px}
+.corpo ul{margin:0 0 14px;padding-left:22px}.corpo li{margin-bottom:7px}
+.ex{background:#1d2650;border-left:4px solid #e8564e;padding:10px 14px;margin:0 0 14px;border-radius:0 4px 4px 0}
+.dest{background:#f2b84b;color:#0e1430;padding:1px 5px;border-radius:2px;font-weight:600}
+.perguntas{border-top:1px dashed #2a3566;padding:16px 20px;background:#1d2650}
+.perguntas h3{font-family:'Courier New',monospace;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px;color:#f2b84b}
+.pergunta{margin:0 0 15px}
+.pergunta label{display:block;font-weight:700;margin-bottom:6px;font-size:17px}
+textarea{width:100%;min-height:74px;font-size:16.5px;line-height:1.5;padding:10px;border:1px solid #2a3566;
+  background:#0e1430;color:#eef2fb;border-radius:4px;resize:vertical}
+textarea:focus{outline:2px solid #6fcf97;outline-offset:1px}
+textarea.verm{border-color:#e8564e;background:rgba(200,60,50,.12)}
+.avVerm{color:#e8564e;font-weight:bold;font-size:13.5px;margin:6px 0 0;font-family:'Courier New',monospace}
+.aviso{font-family:'Courier New',monospace;font-size:12.5px;color:#f2dda0;margin:0 0 10px;min-height:16px;line-height:1.5}
+.modelo{border-top:1px solid #2a3566;padding:16px 20px;background:rgba(255,255,255,.035)}
+.modelo h4{font-family:'Courier New',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px;color:#6fcf97}
+.mQ{border-top:1px dashed #2a3566;padding-top:10px;margin-top:10px}
+.mResp{margin:0 0 8px}
+.chkbox{background:#1d2650;border:1px solid #2a3566;border-radius:4px;padding:10px 12px}
+.chkTit{margin:0 0 8px;font-family:'Courier New',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#9aa6c9}
+.ponto{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 0;font-size:15.5px}
+.pbts{display:flex;gap:6px;flex-shrink:0}
+.btChk{border:1px solid #2a3566;background:#161d3e;color:#eef2fb;padding:5px 13px;border-radius:3px;cursor:pointer;font-size:13px}
+.btChk.on{background:#6fcf97;color:#0e1430;border-color:#6fcf97;font-weight:700}
+.btChk.nao.on{background:#e8564e;border-color:#e8564e;color:#fff}
+.selo-ok{color:#6fcf97;font-weight:bold}
+.selo-rev{color:#e8564e;font-weight:bold}
+.auto{display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-top:1px dashed #2a3566;padding-top:12px;margin-top:10px}
+.cadeado{padding:16px 20px;font-family:'Courier New',monospace;font-size:13px;color:#9aa6c9}
+.revisar{border:2px solid #e8564e;background:rgba(200,60,50,.10);border-radius:5px;padding:16px 20px;margin:26px 0}
+.revisar h2{margin:0 0 10px;color:#e8564e;font-size:22px}
+.revisar li{margin-bottom:6px}
+.pegadinhas{border:2px solid #e8564e;background:rgba(255,255,255,.04);padding:18px 20px;margin:30px 0 22px;border-radius:5px}
+.pegadinhas h2{margin:0 0 12px;color:#e8564e;font-size:23px}
+.pegadinhas ol{margin:0;padding-left:22px}.pegadinhas li{margin-bottom:10px}
+
+.linha-tempo,.ltempo{list-style:none;margin:0;padding:0;position:relative}
+.linha-tempo:before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:#2a3566}
+.linha-tempo li{position:relative;padding:4px 0 14px 34px;font-size:16px}
+.linha-tempo li:before{content:"";position:absolute;left:6px;top:9px;width:13px;height:13px;border-radius:50%;background:#f2b84b;border:2px solid #0e1430}
+.linha-tempo b{color:#6fcf97}
+.ltempo:before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:#2a3566}
+.ltempo li{position:relative;padding:4px 0 14px 34px;font-size:16px}
+.ltempo li:before{content:"";position:absolute;left:6px;top:9px;width:13px;height:13px;border-radius:50%;background:#f2b84b;border:2px solid #0e1430}
+.ltempo b{color:#6fcf97}
+.tl-sec{border:1px solid #2a3566;background:#161d3e;border-radius:5px;padding:18px 20px;margin:28px 0 8px}
+.tl-sec h2{margin:0 0 6px;color:#f2b84b;font-size:23px}
+.tl-sec p{margin:0 0 14px;color:#9aa6c9;font-size:16px}
+</style>
+</head><body>
+<div class="wrap">
+<header class="top">
+  <h1 class="mast">Praça das Vozes<span class="sub">Kit de Estudo · Ensino Religioso 8º ano · Unidades 4 e 5</span></h1>
+  <div class="faixa"><span>8º ano · Ensino Religioso</span><span>·</span><span>A religião na esfera pública</span><span>·</span><span>Unidades 4 e 5</span></div>
+  <p style="margin:0"><span class="selo">Etapa 1 — Leitura Guiada</span></p>
+</header>
+<nav class="abas"><a href="leitura-guiada.html" class="atual">📖 1. Leitura Guiada</a><a href="quiz.html">🎯 2. Quiz</a><a href="resumo.html">🗺️ 3. Resumo</a><a href="simulado.html">📝 4. Simulado</a><a href="index.html">🏠 Início</a></nav>
+
+<div class="painel">
+  <div class="status" id="status">Carregando seu progresso…</div>
+  <div class="btns">
+    <button id="btExportar">📥 Exportar</button>
+    <button id="btImportar">📤 Importar</button>
+    <button id="btZerar">🗑️ Zerar tudo</button>
+  </div>
+</div>
+<input type="file" id="arquivo" accept="application/json" style="display:none">
+
+<div class="progresso"><div class="barra"><i id="barra"></i></div>
+<p id="txtProg">Bloco 0 de 4 concluído.</p></div>
+<p class="aviso-box"><b>Como funciona:</b> leia o bloco, <b>escreva</b> as 3 respostas com suas palavras e clique em <b>Conferir</b>.
+Só depois disso aparecem a resposta modelo e o checklist. Se a resposta vier igualzinha ao texto, o material pede para reescrever
+com as suas palavras — escrever é o que faz a matéria grudar.</p>
+<div id="blocos"></div>
+<section class="revisar" id="revisarBox" style="display:none"></section>
+<section class="tl-sec"><h2>🕑 Linha do tempo: as vozes e os documentos</h2><p>Em Ensino Religioso, a prova costuma cobrar <b>quem disse o quê</b> e <b>quando</b>. Use esta linha do tempo para ligar cada líder, encíclica e acontecimento à sua época.</p><ul class="linha-tempo">
+<li><b>1909–1999</b> — Dom Helder Câmara, arcebispo de Recife e Olinda e idealizador da CNBB.</li>
+<li><b>1917–1980</b> — Dom Óscar Romero, bispo de São Salvador (El Salvador).</li>
+<li><b>1926–2001</b> — Milton Santos, geógrafo brasileiro.</li>
+<li><b>1928–2020</b> — Dom Pedro Casaldáliga, bispo de São Félix do Araguaia.</li>
+<li><b>1931–2005</b> — Dorothy Stang, missionária na Amazônia.</li>
+<li><b>1936–2025</b> — Papa Francisco.</li>
+<li><b>1984</b> — João Paulo II publica <b>Reconciliatio et paenitentia</b>, que define o <b>pecado social</b>.</li>
+<li><b>1995</b> — Milton Santos escreve o artigo <b>“Por uma globalização mais humana”</b>.</li>
+<li><b>2005</b> — Bento XVI publica a encíclica <b>Deus caritas est</b>.</li>
+<li><b>2014</b> — Papa Francisco: <b>“terra, casa e trabalho”</b> são direitos sagrados.</li>
+<li><b>2017</b> — Papa Francisco escreve a políticos católicos pedindo que os <b>leigos</b> não fiquem indiferentes à vida pública.</li>
+<li><b>2018</b> — 12 meninos ficam 17 dias presos numa caverna na Tailândia — exemplo citado pela <b>Monja Coen</b>.</li>
+<li><b>2022</b> — coletânea <b>“Mártires da Floresta Amazônica”</b> (movimento Tapiri Ecumênico e Inter-religioso).</li>
+</ul></section>
+<section class="pegadinhas"><h2>⚠️ As 10 pegadinhas desta prova</h2><ol><li><b>Esfera pública não é só eleição.</b> É o espaço onde se discutem os assuntos de interesse de TODOS (saúde, educação, economia). A religião opina nesse espaço — isso é atuar na esfera pública.</li><li><b>Bento XVI NÃO disse que a Igreja deve governar.</b> Ele disse o contrário: a sociedade justa é obra da <u>política</u>, não da Igreja — mas a Igreja também não pode ficar à margem da luta pela justiça.</li><li><b>“Egoico” (Monja Coen) é quem só pensa em si e se acha melhor que os outros.</b> No caso da caverna, o egoísmo teria matado todos; o que salvou foi a cooperação.</li><li><b>Caridade, voluntariado, ação social e assistência social NÃO são sinônimos.</b> A <u>assistência social</u> é um direito garantido pelo Estado; a <u>caridade</u> é ajuda por compaixão.</li><li><b>“Globalização perversa” (Milton Santos) não quer dizer que a tecnologia é ruim.</b> O problema é que as conquistas da ciência e da técnica <u>não são bem usadas</u>.</li><li><b>“Pecado social” (João Paulo II) não é um “pecado de grupo” qualquer.</b> É o pecado contra os direitos da pessoa, a dignidade do próximo e o bem comum.</li><li><b>Chamar de “comunista” quem defende os pobres é incompreensão.</b> Foi o que aconteceu com o Papa Francisco e com Dom Helder Câmara — eles usam isso como crítica, não como acusação verdadeira.</li><li><b>Dorothy Stang foi uma pessoa real</b>, assassinada na Amazônia; é lembrada como mártir na coletânea “Mártires da Floresta Amazônica” (2022).</li><li><b>A tira de Nando Motta critica o uso da religião como escudo político</b>; a criança mostra o ECA para lembrar que já existe lei protegendo as crianças.</li><li><b>Para Francisco, os leigos não devem ficar “fechados nos templos” nem só “esperando diretrizes”:</b> devem lutar pela justiça na vida pública.</li></ol></section>
+<h2 class="secao-tit">🧭 Cobertura: tópico → tribuna</h2><div class="tabela-wrap"><table class="cob"><thead><tr><th>Tópico do estudo</th><th>Unidade</th><th>Tribuna</th></tr></thead><tbody><tr><td>A religião na esfera pública e o bem comum</td><td>Unidade 4</td><td>Tribuna 1</td></tr><tr><td>Religião x política e as tiras (Will Leite, Clara de Azevedo, Nando Motta)</td><td>Unidade 4</td><td>Tribuna 1</td></tr><tr><td>Participação dos fiéis: Monja Coen, Bento XVI (Deus caritas est) e Papa Francisco</td><td>Unidade 4</td><td>Tribuna 2</td></tr><tr><td>Formas de ajuda (caridade, voluntariado, ação social, assistência social) e direitos sociais</td><td>Unidade 5</td><td>Tribuna 3</td></tr><tr><td>Tira de Genildo Ronchi e a “globalização perversa” (Milton Santos)</td><td>Unidade 5</td><td>Tribuna 3</td></tr><tr><td>Compromisso com os empobrecidos (Francisco, Helder Câmara, Casaldáliga, Romero)</td><td>Unidade 5</td><td>Tribuna 4</td></tr><tr><td>Pecado social (João Paulo II) e os mártires / Dorothy Stang</td><td>Unidade 5</td><td>Tribuna 4</td></tr></tbody></table></div>
+<div class="rodape"><span>Próximo material da sequência →</span><a href="quiz.html">🎯 Ir para o Quiz</a></div>
+
+</div>
+<div class="overlay" id="overlay"><div class="modal">
+  <h3 id="mTit">Aviso</h3><p id="mTxt"></p>
+  <div class="acoes"><button id="mNao" style="display:none">Cancelar</button>
+  <button class="principal" id="mSim">Entendi</button></div>
+</div></div>
+<script>
+function aviso(t,msg,onSim,comCancelar){
+  document.getElementById('mTit').textContent=t;
+  document.getElementById('mTxt').textContent=msg;
+  document.getElementById('mNao').style.display=comCancelar?'inline-block':'none';
+  var ov=document.getElementById('overlay'); ov.classList.add('on');
+  document.getElementById('mSim').onclick=function(){ov.classList.remove('on'); if(onSim)onSim();};
+  document.getElementById('mNao').onclick=function(){ov.classList.remove('on');};
+}
+</script>
+<script>
+var BLOCOS=[{"n": 1, "rot": "Tribuna 1", "t": "A religião na praça pública", "pg": "Unidade 4", "html": "\n<p>As tradições religiosas não se preocupam apenas com o que acontece dentro dos templos. Elas também se voltam para as <b>questões públicas</b> e para o <span class=\"dest\">bem comum</span> — aquilo que é bom para toda a sociedade, e não só para uma pessoa.</p>\n<p>Por isso, muitas religiões orientam seus seguidores a se <b>comprometer com a sociedade</b> e a assumir <b>responsabilidade pelos mais vulneráveis e marginalizados</b> — as pessoas que têm menos e costumam ser deixadas de lado.</p>\n<p>Essa atuação na vida pública aproxima dois campos que às vezes parecem distantes: a <b>religião</b> e a <b>política</b>. E aqui \"política\" não é só eleição: são as <b>políticas públicas</b>, as decisões do governo sobre <b>saúde, educação e economia</b>, que afetam a vida de todos.</p>\n<div class=\"ex\"><b>Esfera pública:</b> é o espaço onde se discutem os assuntos de interesse de todos — a \"praça\" onde a sociedade conversa sobre o que fazer com os problemas comuns. Dizer que a religião está na esfera pública é dizer que ela também opina sobre esses problemas.</div>\n<p>Esse encontro entre fé e vida pública costuma gerar debate. Três tiras (charges) brincam com isso:</p>\n<ul>\n<li><b>Tira de Will Leite (2020):</b> uma repórter pergunta a um padre \"Religião deve se misturar com política?\" e ele responde \"Não\". No dia seguinte o jornal estampa \"Padre fala sobre política\", e um leitor reage irritado: \"Esse padre deveria saber que religião e política não se misturam\". <span class=\"dest\">A ironia:</span> o próprio leitor usa a fala do padre para discutir política.</li>\n<li><b>Tira de Clara de Azevedo (2019):</b> critica o <b>falso moralismo</b> de grupos que se escondem atrás de nomes enormes e bonitos — \"em nome da ética e da família, mas sem falso moralismo\", \"moderada, porém não em cima do muro\" — para parecer o que não são.</li>\n<li><b>Tira de Nando Motta (2023):</b> um político grita \"Em defesa das crianças!\" segurando um livro de fé, mas uma criança mostra o <b>ECA (Estatuto da Criança e do Adolescente)</b> e diz: \"Já temos um livro que nos protege\". <span class=\"dest\">A crítica:</span> usar a religião como escudo político, como se a fé substituísse as leis que já existem.</li>\n</ul>", "q": ["Com suas palavras, o que significa dizer que uma religião atua na “esfera pública”?", "Explique a ironia da tira de Will Leite: por que o leitor irritado acaba se contradizendo?", "Na tira de Nando Motta, a criança mostra o ECA ao político. Explique, com suas palavras, qual é a crítica que a tira faz."], "a": ["Significa que a religião não fica só dentro do templo: ela também opina e se envolve nos assuntos de interesse de toda a sociedade, como saúde, educação e o cuidado com os mais pobres. A “esfera pública” é esse espaço em que os problemas de todos são discutidos.", "Resposta pessoal. Espera-se: o leitor afirma que religião e política não se misturam, mas, para dizer isso, está justamente comentando a fala de um padre sobre política. Ele faz o contrário do que defende no mesmo instante em que reclama da mistura.", "Resposta pessoal. Espera-se: a tira critica o político que usa a religião como escudo, gritando “em defesa das crianças” com um livro de fé na mão. A criança lembra que já existe uma lei feita para protegê-la, o ECA. A fé não deve ser usada como desculpa política, como se substituísse as leis que já garantem direitos."]}, {"n": 2, "rot": "Tribuna 2", "t": "Quando os fiéis entram na praça", "pg": "Unidade 4", "html": "\n<p>Se a religião se preocupa com o bem comum, o que ela espera dos seus seguidores? Vários líderes religiosos responderam a isso — e todos pedem <b>participação</b>, não distância.</p>\n<p><b>Monja Coen (budismo)</b> defende que a mudança do mundo começa dentro de cada pessoa: <i>\"Se a revolução não for interna, se cada um de nós não mudar, não são os sistemas políticos, econômicos ou sociais que vão fazer a grande mudança.\"</i> Para ela, cada pessoa pode ser um <span class=\"dest\">\"átomo de transformação\"</span> individual e social.</p>\n<div class=\"ex\"><b>O exemplo da caverna:</b> em 2018, 12 meninos ficaram 17 dias presos numa caverna inundada na Tailândia. A Monja Coen observou que, se eles fossem <b>\"egoicos\"</b> — pessoas que só pensam em si e se acham melhores que as outras —, teriam brigado pela comida e pelo ar, e todos teriam morrido. O que os salvou foi o contrário: <b>paciência, perseverança, trabalho em conjunto e cuidado mútuo</b>.</div>\n<p>No cristianismo, o <b>Papa Bento XVI</b>, na encíclica <i>Deus caritas est</i> (2005), explicou os limites entre Igreja e Estado: a Igreja <b>não pode nem deve</b> tomar a batalha política nas próprias mãos nem se colocar no lugar do Estado — mas também <b>não pode ficar à margem</b> da luta pela justiça; deve despertar as forças espirituais e a razão. <span class=\"dest\">\"A sociedade justa não pode ser obra da Igreja; deve ser realizada pela política.\"</span></p>\n<p>O <b>Papa Francisco</b>, numa mensagem a políticos católicos (2017), foi na mesma direção: pediu que os <b>leigos</b> (os fiéis que não são padres) <b>não permaneçam indiferentes</b> à vida pública, nem fiquem fechados nos templos, nem apenas esperando ordens — mas que <b>lutem pela justiça</b> e por formas de vida mais humanas para todos.</p>", "q": ["Segundo Bento XVI, qual é o papel da Igreja e qual é o papel da política na construção de uma sociedade justa?", "Explique com suas palavras a lição que a Monja Coen tira do caso dos meninos presos na caverna.", "Um fiel diz: “religião é só rezar dentro da igreja; não tem nada a ver com a vida pública”. Como o Papa Francisco responderia a ele, segundo o texto?"], "a": ["Para Bento XVI, a Igreja não deve tomar o lugar do Estado nem assumir a disputa política nas próprias mãos; o papel dela é despertar as forças espirituais e a razão. Já construir de fato a sociedade justa é tarefa da política. Ou seja: a Igreja inspira e cobra justiça, mas quem realiza é a política.", "Resposta pessoal. Espera-se: os meninos se salvaram porque tiveram paciência, perseverança, trabalharam juntos e cuidaram uns dos outros. Se tivessem sido “egoicos”, pensando só em si e brigando pela comida e pelo ar, teriam morrido. A lição é que o cuidado com o outro e a cooperação podem salvar, enquanto o egoísmo destrói.", "Resposta pessoal. Espera-se: Francisco diria que o fiel não deve ficar indiferente nem fechado no templo. Ele pediu que os leigos se envolvam na vida pública e lutem pela justiça e por uma vida mais humana para todos, em vez de só rezar e esperar ordens."]}, {"n": 3, "rot": "Tribuna 3", "t": "Ajudar não é tudo igual: os direitos sociais", "pg": "Unidade 5", "html": "\n<p>A segunda parte do estudo pergunta: como a religião responde às <b>questões sociais</b> — a fome, a falta de moradia, as pessoas em situação de rua, as famílias sem acesso à escola em tempo integral?</p>\n<p>Primeiro é preciso diferenciar as <b>formas de ajudar</b>, que não são exatamente a mesma coisa:</p>\n<ul>\n<li><b>Caridade:</b> ajudar alguém por compaixão, muitas vezes de forma individual e pontual (dar comida, roupa ou dinheiro a quem precisa).</li>\n<li><b>Voluntariado:</b> doar o próprio tempo e trabalho, de graça, para ajudar pessoas ou causas.</li>\n<li><b>Ação social:</b> ações organizadas por um grupo (uma igreja, uma ONG) para atender quem precisa.</li>\n<li><b>Assistência social:</b> um <b>direito</b> garantido pelo Estado, com políticas públicas voltadas a quem está em situação de vulnerabilidade — não depende da boa vontade de uma pessoa.</li>\n</ul>\n<p>Muita gente precisa de ajuda: pessoas <b>sem moradia</b>, <b>em situação de rua</b>, sem meios para se alimentar. Por isso se fala em <span class=\"dest\">direitos sociais</span> e <b>necessidades básicas</b>: moradia, alimentação, educação e saúde não deveriam ser favores, mas direitos de todos.</p>\n<div class=\"ex\"><b>Tira de Genildo Ronchi (2020):</b> mostra pessoas em situação de rua debaixo de um viaduto, com duas placas: \"Jesus nasce aqui todos os dias\" e \"E morre aqui todos os dias\". A tira denuncia que o <b>direito à moradia e à dignidade</b> é negado todos os dias a essas pessoas.</div>\n<div class=\"postit\"><b>Curiosidade — Milton Santos</b>O geógrafo brasileiro <code>Milton Santos</code> (1926-2001), no artigo \"Por uma globalização mais humana\" (1995), chamou de <b>\"globalização perversa\"</b> o mundo atual: ele produz desigualdade, desemprego, pobreza e fome e amplia as fraturas sociais, porque as <b>conquistas da ciência e da técnica não são bem usadas</b>. Mas ele dizia que é possível pensar em <b>outra globalização</b>, voltada ao bem-estar de todos.</div>", "q": ["O que Milton Santos chamou de “globalização perversa” e por que, segundo ele, ela acontece?", "A tira de Genildo Ronchi mostra pessoas em situação de rua sob um viaduto, com as placas “Jesus nasce aqui todos os dias / e morre aqui todos os dias”. Que direito social a tira está denunciando?", "Explique a diferença entre “caridade” e “assistência social”, dando um exemplo de cada uma."], "a": ["É o nome que Milton Santos deu à globalização de hoje, que produz desigualdade, desemprego, pobreza e fome e aumenta as diferenças sociais. Para ele, isso acontece porque as conquistas da ciência e da técnica não são bem usadas — poderiam servir a todos, mas acabam beneficiando poucos. Ele acreditava que seria possível outra globalização, voltada ao bem-estar.", "Resposta pessoal. Espera-se: a tira denuncia a falta do direito à moradia e à dignidade. As pessoas em situação de rua vivem (e “morrem”) embaixo do viaduto todos os dias, sem ter onde morar — um direito social que está sendo negado.", "Resposta pessoal. Espera-se: a caridade é uma ajuda feita por compaixão, geralmente individual e pontual (por exemplo, dar um prato de comida a quem pede na rua). A assistência social é um direito garantido pelo Estado, com políticas públicas para quem está em situação de vulnerabilidade (por exemplo, um programa do governo que oferece abrigo e renda a famílias sem moradia). Uma depende da boa vontade; a outra é um direito."]}, {"n": 4, "rot": "Tribuna 4", "t": "Vozes que defenderam os pobres", "pg": "Unidade 5", "html": "\n<p>Ao longo da história, várias lideranças religiosas se comprometeram com os <b>empobrecidos</b> e defenderam seus direitos — às vezes pagando caro por isso.</p>\n<ul>\n<li><b>Papa Francisco</b> (1936-2025) defendeu que <b>\"terra, casa e trabalho\"</b> são <b>direitos sagrados</b>, e que exigir isso é a doutrina social da Igreja. Dizia que o amor pelos pobres está no centro do Evangelho — e que, por falar assim, alguns o chamavam de \"comunista\".</li>\n<li><b>Dom Helder Câmara</b> (1909-1999), arcebispo de Recife e Olinda e idealizador da CNBB: <i>\"Quando dou comida aos pobres, me chamam de santo. Quando pergunto por que eles são pobres, chamam-me de comunista.\"</i></li>\n<li><b>Dom Pedro Casaldáliga</b> (1928-2020), bispo de São Félix do Araguaia: <i>\"Só vivendo a noite escura dos pobres é possível viver o Dia de Deus. As estrelas só se veem de noite.\"</i></li>\n<li><b>Dom Óscar Romero</b> (1917-1980), bispo de São Salvador (El Salvador): <i>\"Não é vontade de Deus que uns tenham tudo e outros não tenham nada.\"</i></li>\n</ul>\n<div class=\"ex\"><b>Pecado social — Papa João Paulo II</b> (documento <i>Reconciliatio et paenitentia</i>, 1984): é <b>pecado social</b> todo pecado cometido <b>contra os direitos da pessoa humana</b> (a começar pelo direito à vida), contra a <b>dignidade e a honra do próximo</b>, e contra o <b>bem comum</b> e os direitos e deveres dos cidadãos. Ou seja: a injustiça contra o outro também é pecado.</div>\n<p><b>Fique sabendo — os mártires da floresta:</b> em 2022, o movimento Tapiri Ecumênico e Inter-religioso reuniu a coletânea <b>\"Mártires da Floresta Amazônica\"</b>, uma homenagem a quem morreu lutando pela floresta e pela população local.</p>\n<div class=\"ex\"><b>Dorothy Stang</b> (1931-2005) trabalhou nas comunidades da Amazônia, reconhecendo as desigualdades e a situação de indígenas, ribeirinhos e trabalhadores empobrecidos. Foi <b>assassinada</b> por causa dessa luta. Havia declarado: <i>\"Não vou fugir nem abandonar a luta desses trabalhadores. Eles têm o sagrado direito a uma vida melhor, numa terra onde possam viver e produzir com dignidade, sem devastar.\"</i></div>", "q": ["O que é “pecado social” segundo o Papa João Paulo II?", "Dom Helder Câmara disse: “Quando dou comida aos pobres, me chamam de santo. Quando pergunto por que eles são pobres, chamam-me de comunista.” Explique, com suas palavras, o que ele quis criticar.", "Usando a fala de Dorothy Stang, explique por que ela é lembrada como mártir."], "a": ["Segundo João Paulo II, pecado social é todo pecado cometido contra os direitos da pessoa humana — a começar pelo direito à vida —, contra a dignidade e a honra do próximo e contra o bem comum e os direitos dos cidadãos. Em outras palavras, a injustiça feita contra o outro também é considerada pecado.", "Resposta pessoal. Espera-se: ele critica o fato de a sociedade elogiar quem só dá esmola (chama de santo), mas se incomodar com quem questiona as causas da pobreza (chama de comunista). Dom Helder quis mostrar que não basta ajudar: é preciso perguntar por que existe tanta pobreza e querer mudar isso — e que isso incomoda os poderosos.", "Resposta pessoal. Espera-se: Dorothy Stang disse que não fugiria nem abandonaria a luta dos trabalhadores, que teriam o direito sagrado a uma vida digna numa terra onde pudessem viver e produzir sem devastar. Ela foi assassinada por defender essas pessoas. É lembrada como mártir porque morreu por causa dessa luta, sem abandonar aquilo em que acreditava."]}];
+var PONTOS=[[["que a religião não fica só dentro do templo", "que ela participa dos assuntos de interesse de toda a sociedade (bem comum)"], ["que o leitor diz que religião e política não se misturam", "que, ao dizer isso, ele mesmo comenta a fala do padre sobre política / se contradiz"], ["que o político usa a religião como escudo político", "que a criança lembra que o ECA já protege as crianças", "que a fé não deve substituir as leis que garantem direitos"]], [["que a Igreja não deve tomar o lugar do Estado", "que o papel da Igreja é despertar as forças espirituais e a razão", "que construir a sociedade justa é tarefa da política"], ["que o que salvou os meninos foi paciência, cooperação e cuidado mútuo", "que o egoísmo (ser “egoico”) teria levado todos à morte"], ["que Francisco pede que o fiel não fique indiferente nem fechado no templo", "que os leigos devem se envolver na vida pública e lutar pela justiça"]], [["que é a globalização atual, que produz desigualdade, pobreza, desemprego e fome", "que acontece porque as conquistas da ciência e da técnica não são bem usadas", "que seria possível outra globalização, voltada ao bem-estar"], ["que é o direito à moradia e à dignidade", "que esse direito é negado às pessoas em situação de rua"], ["que a caridade é ajuda por compaixão, individual e pontual", "que a assistência social é um direito garantido pelo Estado / política pública", "que dei um exemplo de cada uma"]], [["que é todo pecado contra os direitos da pessoa humana (a começar pela vida)", "que inclui a dignidade e a honra do próximo e o bem comum", "que a injustiça contra o outro também é pecado"], ["que a sociedade elogia quem só dá esmola, mas critica quem questiona as causas da pobreza", "que ele defende perguntar por que existe pobreza, e não só ajudar"], ["que ela disse que não abandonaria a luta dos trabalhadores por uma vida digna", "que foi assassinada por causa dessa luta", "que por isso é lembrada como mártir"]]];
+
+var KEY='er8sj_esferapublica_v1_leituraguiada_v1'; var mem={};
+function ler(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return mem}}
+function gravar(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){mem=s}carimbo();}
+function carimbo(){
+  var d=new Date();
+  var f=d.toLocaleDateString('pt-BR')+' \u00e0s '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  S.quando=f;
+  try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){mem=S}
+  var el=document.getElementById('status'); if(el)el.textContent='\uD83D\uDCBE Salvo automaticamente \u2014 \u00faltima vez: '+f;
+}
+function ligarPainel(){
+  document.getElementById('btExportar').onclick=function(){
+    var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='leitura-guiada-ensino-religioso8-esfera-publica.json'; a.click();
+  };
+  document.getElementById('btImportar').onclick=function(){document.getElementById('arquivo').click();};
+  document.getElementById('arquivo').onchange=function(e){
+    var f=e.target.files[0]; if(!f)return; var r=new FileReader();
+    r.onload=function(){ try{ S=normaliza(JSON.parse(r.result)); gravar(S); render();
+        aviso('Pronto','Seu progresso foi importado com sucesso.');
+      }catch(err){ aviso('Ops','N\u00e3o consegui ler esse arquivo. Ele precisa ser o .json exportado por este material.'); } };
+    r.readAsText(f);
+  };
+  document.getElementById('btZerar').onclick=function(){
+    aviso('Zerar tudo?','Isso apaga tudo o que foi respondido nesta p\u00e1gina. N\u00e3o d\u00e1 para desfazer.',function(){
+      S=normaliza({}); gravar(S); render(); },true);
+  };
+}
+
+
+function normTxt(s){s=(s||'').toLowerCase();try{s=s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')}catch(e){}
+  return s.replace(/[^a-z0-9\s]+/g,' ').replace(/\s+/g,' ').trim();}
+var TXTN=BLOCOS.map(function(b){var d=document.createElement('div');d.innerHTML=b.html;
+  return normTxt(d.textContent||d.innerText||'').split(' ');});
+var QTXT=BLOCOS.map(function(b){return b.q.map(function(q){return normTxt(q).split(' ');});});
+function analisaRuns(rw,bw){
+  var pos={},i2;for(i2=0;i2<bw.length;i2++){(pos[bw[i2]]=pos[bw[i2]]||[]).push(i2);}
+  var i=0,maxRun=0,cob=0,n=rw.length;
+  while(i<n){
+    var best=0,ps=pos[rw[i]]||[];
+    for(var a=0;a<ps.length;a++){var k=0;while(i+k<n&&bw[ps[a]+k]===rw[i+k])k++;if(k>best)best=k;}
+    if(best>maxRun)maxRun=best;
+    if(best>=5){cob+=best;i+=best;}else i++;
+  }
+  return {maxRun:maxRun,cob:cob,n:n};
+}
+function tiraCitacao(rw,qw){
+  var pos={},i2;for(i2=0;i2<qw.length;i2++){(pos[qw[i2]]=pos[qw[i2]]||[]).push(i2);}
+  var out=[],i=0;
+  while(i<rw.length){
+    var best=0,ps=pos[rw[i]]||[];
+    for(var a=0;a<ps.length;a++){var k=0;while(i+k<rw.length&&qw[ps[a]+k]===rw[i+k])k++;if(k>best)best=k;}
+    if(best>=4){i+=best;}else{out.push(rw[i]);i++;}
+  }
+  return out;
+}
+function ehTranscrita(txt,n,j){
+  var w=normTxt(txt).split(' ').filter(function(x){return x;});
+  if(w.length<5)return false;
+  if(j)w=tiraCitacao(w,QTXT[n-1][j-1]);
+  if(w.length<5)return false;
+  var r=analisaRuns(w,TXTN[n-1]);
+  return r.maxRun>=8||(w.length>=8&&r.cob/r.n>0.6);
+}
+
+
+function normaliza(d){d=d||{};if(!d.resp)d.resp={};if(!d.feito)d.feito={};if(!d.auto)d.auto={};
+  if(!d.chk)d.chk={};if(!d.tentou)d.tentou={};if(!d.transcrita)d.transcrita={};return d;}
+var S=normaliza(ler());
+function escapa(s){return (s||'').replace(/</g,'&lt;');}
+function statusBloco(n){
+  var rev=false,total=0,sim=0;
+  for(var j=1;j<=3;j++){
+    var k=n+'-'+j;
+    if(S.transcrita[k])rev=true;
+    var pts=PONTOS[n-1][j-1],c=S.chk[k]||[];
+    for(var p=0;p<pts.length;p++){total++;if(c[p]===0)rev=true;if(c[p]===1)sim++;}
+  }
+  if(rev)return 'rev'; if(total&&sim===total)return 'ok'; return '';
+}
+function render(){
+  var alvo=document.getElementById('blocos'); alvo.innerHTML='';
+  BLOCOS.forEach(function(b,i){
+    var liberado=(i===0)||S.feito[b.n-1];
+    var feito=!!S.feito[b.n];
+    var sec=document.createElement('section');
+    sec.className='bloco'+(liberado?'':' trancado');
+    var perg='';
+    b.q.forEach(function(qt,j){
+      var k=b.n+'-'+(j+1), v=escapa(S.resp[k]), verm=!!S.transcrita[k];
+      var ro=(feito&&!verm)?'readonly':'';
+      perg+='<div class="pergunta"><label for="t'+k+'">'+(j+1)+'. '+qt+'</label>'+
+        '<textarea id="t'+k+'" data-b="'+b.n+'" data-q="'+(j+1)+'" class="'+(verm?'verm':'')+'" '+ro+'>'+v+'</textarea>'+
+        (verm?'<p class="avVerm">\uD83D\uDD34 Esta resposta ainda est\u00e1 igual ao texto do bloco \u2014 reescreva com as SUAS palavras.</p>':'')+
+        '</div>';
+    });
+    var mod='';
+    b.a.forEach(function(at,j){
+      var k=b.n+'-'+(j+1), pts=PONTOS[b.n-1][j], chk=S.chk[k]||[], linhas='';
+      pts.forEach(function(pt,pi){
+        var vv=chk[pi];
+        linhas+='<div class="ponto"><span>'+pt+'</span><span class="pbts">'+
+          '<button class="btChk '+(vv===1?'on':'')+'" data-k="'+k+'" data-p="'+pi+'" data-v="1">Sim</button>'+
+          '<button class="btChk nao '+(vv===0?'on':'')+'" data-k="'+k+'" data-p="'+pi+'" data-v="0">N\u00e3o</button></span></div>';
+      });
+      mod+='<div class="mQ"><p class="mResp"><b>'+(j+1)+'.</b> '+at+'</p>'+
+           '<div class="chkbox"><p class="chkTit">\u2705 Minha resposta disse que\u2026</p>'+linhas+'</div></div>';
+    });
+    var st=feito?statusBloco(b.n):'';
+    var selo=st==='ok'?'<span class="selo-ok">\u2705 Bloco ok</span>':st==='rev'?'<span class="selo-rev">\uD83D\uDD01 Para revisar</span>':'';
+    sec.innerHTML='<div class="cab"><span class="num">'+b.rot+'</span><h2>'+b.t+'</h2><span class="pag">'+b.pg+'</span></div>'+
+      (liberado?
+        '<div class="corpo">'+b.html+'</div>'+
+        '<div class="perguntas"><h3>\u270D\uFE0F Escreva com suas palavras \u2014 3 perguntas</h3>'+perg+
+        '<p class="aviso" id="av'+b.n+'"></p>'+
+        '<button class="principal btConferir" data-b="'+b.n+'" '+(feito?'disabled':'')+'>\u2714\uFE0F Conferir</button></div>'+
+        '<div class="modelo" style="display:'+(feito?'block':'none')+'" id="mod'+b.n+'">'+
+          '<h4>Resposta modelo \u2014 compare ponto a ponto</h4>'+mod+
+          '<div class="auto">'+selo+'</div></div>'
+      : '<div class="cadeado">\uD83D\uDD12 Este bloco abre depois que voc\u00ea conferir o anterior.</div>');
+    alvo.appendChild(sec);
+  });
+  ligar(); progresso(); renderRevisar();
+}
+function renderRevisar(){
+  var box=document.getElementById('revisarBox');
+  var itens=[];
+  BLOCOS.forEach(function(b){
+    if(!S.feito[b.n])return;
+    for(var j=1;j<=3;j++){
+      var k=b.n+'-'+j;
+      if(S.transcrita[k])itens.push('<b>'+b.rot+'</b>, pergunta '+j+': resposta igual ao texto \u2014 reescrever com as suas palavras.');
+      var pts=PONTOS[b.n-1][j-1],c=S.chk[k]||[];
+      for(var p=0;p<pts.length;p++){if(c[p]===0)itens.push('<b>'+b.rot+'</b>, pergunta '+j+': faltou dizer \u2014 \u201c'+pts[p]+'\u201d.');}
+    }
+  });
+  if(!itens.length){box.style.display='none';return;}
+  box.style.display='block';
+  var h='<h2>\uD83D\uDD01 Para revisar antes da prova</h2><ul>';
+  itens.forEach(function(t){h+='<li>'+t+'</li>';});
+  box.innerHTML=h+'</ul>';
+}
+function ligar(){
+  document.querySelectorAll('textarea').forEach(function(t){
+    t.addEventListener('input',function(){
+      var k=t.dataset.b+'-'+t.dataset.q;
+      S.resp[k]=t.value;
+      if(S.transcrita[k]&&!ehTranscrita(t.value,parseInt(t.dataset.b,10),parseInt(t.dataset.q,10))){
+        delete S.transcrita[k]; gravar(S); render();
+        var nt=document.getElementById('t'+k);
+        if(nt){nt.focus();try{nt.selectionStart=nt.selectionEnd=nt.value.length;}catch(e){}}
+        return;
+      }
+      gravar(S);
+    });
+  });
+  document.querySelectorAll('.btConferir').forEach(function(bt){
+    bt.addEventListener('click',function(){
+      var n=parseInt(bt.dataset.b,10),vazio=false,j;
+      for(j=1;j<=3;j++){if((S.resp[n+'-'+j]||'').trim().length<3)vazio=true;}
+      var av=document.getElementById('av'+n);
+      if(vazio){av.textContent='\u26A0\uFE0F Responda as 3 perguntas (pelo menos 3 letras em cada) antes de conferir.';return;}
+      var primeira=[],naoMudou=[];
+      for(var j2=1;j2<=3;j2++){
+        var k=n+'-'+j2,v2=S.resp[k]||'';
+        if(ehTranscrita(v2,n,j2)){
+          if(S.tentou[k]===undefined){S.tentou[k]=v2;primeira.push(j2);}
+          else if(v2===S.tentou[k]){naoMudou.push(j2);}
+          else{S.transcrita[k]=true;}
+        }else if(S.transcrita[k]){delete S.transcrita[k];}
+      }
+      if(primeira.length||naoMudou.length){
+        gravar(S);
+        var m='\uD83D\uDFE1 ';
+        if(primeira.length)m+='Pergunta'+(primeira.length>1?'s':'')+' '+primeira.join(', ')+': boa parte da resposta est\u00e1 igual ao texto do bloco. Tente explicar como se fosse para um amigo, sem olhar o texto \u2014 pode ficar mais curto e simples, o que vale \u00e9 ser SEU. Depois clique em Conferir de novo. ';
+        if(naoMudou.length)m+='Pergunta'+(naoMudou.length>1?'s':'')+' '+naoMudou.join(', ')+': voc\u00ea ainda n\u00e3o mudou a resposta \u2014 altere e clique em Conferir de novo.';
+        av.textContent=m; return;
+      }
+      av.textContent=''; S.feito[n]=true; gravar(S); render();
+      var el2=document.getElementById('mod'+n); if(el2)el2.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  });
+  document.querySelectorAll('.btChk').forEach(function(bt){
+    bt.addEventListener('click',function(){
+      var k=bt.dataset.k;
+      if(!S.chk[k])S.chk[k]=[];
+      S.chk[k][parseInt(bt.dataset.p,10)]=parseInt(bt.dataset.v,10);
+      var n=parseInt(k.split('-')[0],10), st=statusBloco(n); if(st)S.auto[n]=st;
+      gravar(S); render();
+    });
+  });
+}
+function progresso(){
+  var c=0; BLOCOS.forEach(function(b){if(S.feito[b.n])c++;});
+  document.getElementById('barra').style.width=(c/BLOCOS.length*100)+'%';
+  document.getElementById('txtProg').textContent='Bloco '+c+' de '+BLOCOS.length+' conclu\u00eddo'+(c===BLOCOS.length?' \u2014 leitura completa! \uD83C\uDF89':'.');
+}
+ligarPainel(); render(); carimbo();
+
+</script>
+</body></html>
