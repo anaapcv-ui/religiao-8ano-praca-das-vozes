@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Praça das Vozes — Quiz | Ensino Religioso 8º ano</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0e1430;color:#eef2fb;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;font-size:18px;line-height:1.65}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 90px}
+a{color:#6fcf97}
+header.top{border-bottom:2px solid #f2b84b;padding:24px 0 14px;text-align:center}
+.mast{margin:0;font-size:clamp(28px,6.5vw,52px);line-height:1.05;letter-spacing:.02em;color:#f2b84b;text-transform:uppercase;font-weight:800}
+.mast .sub{display:block;font-size:.30em;letter-spacing:.28em;font-weight:400;margin-top:12px;color:#9aa6c9;text-transform:uppercase}
+.faixa{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-family:'Courier New',monospace;font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;border-top:1px solid #2a3566;border-bottom:1px solid #2a3566;margin-top:14px;padding:8px 0;color:#9aa6c9}
+.selo{display:inline-block;background:#f2b84b;color:#0e1430;font-family:'Courier New',monospace;font-size:11.5px;letter-spacing:.14em;
+  padding:6px 13px;border-radius:3px;text-transform:uppercase;font-weight:700;margin-top:14px}
+nav.abas{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 0 4px}
+nav.abas a{font-family:'Courier New',monospace;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+  color:#eef2fb;border:1px solid #2a3566;background:#161d3e;padding:9px 13px;border-radius:3px}
+nav.abas a.atual{background:#f2b84b;color:#0e1430;border-color:#f2b84b;font-weight:700}
+nav.abas a:hover{background:#6fcf97;color:#0e1430;border-color:#6fcf97}
+.painel{border:1px solid #2a3566;background:#161d3e;padding:12px 14px;margin:18px 0 22px;display:flex;flex-wrap:wrap;
+  gap:10px;align-items:center;justify-content:space-between;border-radius:4px}
+.painel .status{font-family:'Courier New',monospace;font-size:12.5px;color:#9aa6c9}
+.painel .btns{display:flex;gap:7px;flex-wrap:wrap}
+button{font-family:'Courier New',monospace;font-size:13px;cursor:pointer;border:1px solid #2a3566;background:#161d3e;color:#eef2fb;
+  padding:9px 13px;border-radius:3px}
+button:hover{background:#6fcf97;color:#0e1430;border-color:#6fcf97}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.principal{background:#f2b84b;color:#0e1430;border-color:#f2b84b;font-weight:700}
+input,select,textarea{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif}
+.barra{height:14px;border:1px solid #2a3566;background:#161d3e;border-radius:8px;overflow:hidden}
+.barra i{display:block;height:100%;background:linear-gradient(90deg,#f2b84b,#6fcf97);width:0;transition:width .4s}
+.progresso p{font-family:'Courier New',monospace;font-size:12.5px;margin:7px 0 22px;color:#9aa6c9}
+.aviso-box{font-family:'Courier New',monospace;font-size:13px;background:#161d3e;border:1px solid #2a3566;border-left:4px solid #f2b84b;
+  padding:12px 14px;border-radius:4px;line-height:1.6}
+.secao-tit{border-bottom:2px solid #f2b84b;margin:34px 0 16px;padding-bottom:7px;font-size:25px;color:#f2b84b}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.overlay.on{display:flex}
+.modal{background:#161d3e;border:2px solid #f2b84b;max-width:440px;width:100%;padding:22px;border-radius:6px}
+.modal h3{margin:0 0 10px;font-size:21px;color:#f2b84b}
+.modal p{margin:0 0 16px}
+.modal .acoes{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.rodape{border-top:2px solid #2a3566;margin-top:34px;padding-top:16px;display:flex;flex-wrap:wrap;gap:12px;
+  justify-content:space-between;align-items:center;font-family:'Courier New',monospace;font-size:12.5px;color:#9aa6c9}
+.rodape a{color:#eef2fb;text-decoration:none;border:1px solid #2a3566;background:#161d3e;padding:10px 15px;
+  border-radius:3px;text-transform:uppercase;letter-spacing:.06em}
+.rodape a:hover{background:#f2b84b;color:#0e1430;border-color:#f2b84b}
+.tabela-wrap{overflow-x:auto}
+table.cob{width:100%;border-collapse:collapse;background:#161d3e;font-size:16px}
+table.cob th,table.cob td{border:1px solid #2a3566;padding:9px 11px;text-align:left}
+table.cob th{background:#1d2650;font-family:'Courier New',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#f2b84b}
+.postit{background:#f2dda0;color:#2a2410;border-radius:3px;box-shadow:3px 4px 0 rgba(0,0,0,.35);padding:16px 18px;
+  transform:rotate(-.5deg);margin:14px 0}
+.postit b{display:block;font-family:'Courier New',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.postit code{background:#fff;border:1px dashed #6b5f2a;padding:2px 7px;font-size:15px;border-radius:2px}
+@media(max-width:620px){body{font-size:17px}}
+
+.q{border:1px solid #2a3566;background:#161d3e;border-radius:5px;margin:0 0 18px;overflow:hidden}
+.q .cabq{display:flex;gap:10px;align-items:center;padding:12px 16px;background:#1d2650;border-bottom:1px solid #2a3566;flex-wrap:wrap}
+.q .nq{font-family:'Courier New',monospace;font-size:11.5px;letter-spacing:.12em;background:#f2b84b;color:#0e1430;padding:5px 10px;border-radius:3px;font-weight:700}
+.q .tag{font-family:'Courier New',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#0e1430;background:#6fcf97;padding:4px 9px;border-radius:3px}
+.q .val{margin-left:auto;font-family:'Courier New',monospace;font-size:11.5px;color:#9aa6c9}
+.q .enun{padding:16px 18px 6px;font-size:17.5px}
+.q .enun .txtbase{background:#1d2650;border-left:4px solid #e8564e;padding:10px 14px;margin:0 0 12px;border-radius:0 4px 4px 0;font-size:16.5px}
+.q .enun ul.afirm{list-style:none;padding:0;margin:0 0 12px}
+.q .enun ul.afirm li{background:#1d2650;border:1px solid #2a3566;border-radius:4px;padding:8px 12px;margin-bottom:6px;font-size:16.5px}
+.alts{padding:0 18px 16px;list-style:none;margin:0}
+.alts li{margin-bottom:8px}
+.alts label{display:flex;gap:10px;align-items:flex-start;border:1px solid #2a3566;background:#0e1430;border-radius:4px;
+  padding:11px 13px;cursor:pointer;font-size:16.5px}
+.alts label:hover{border-color:#6fcf97}
+.alts input{margin-top:5px;flex-shrink:0}
+.alts .letra{font-family:'Courier New',monospace;font-weight:700;color:#f2b84b;flex-shrink:0}
+.alts label.certa{border-color:#6fcf97;background:rgba(80,190,140,.14)}
+.alts label.errada{border-color:#2a3566;background:rgba(255,255,255,.04);opacity:.85}
+.alts label.marcada{outline:2px solid #6fcf97}
+.expl{font-size:15px;margin:6px 0 0;padding-left:26px;color:#9aa6c9;line-height:1.5}
+.expl.boa{color:#6fcf97}
+.somin{display:flex;gap:10px;align-items:center;padding:0 18px 16px;flex-wrap:wrap}
+.somin input{width:120px;font-family:'Courier New',monospace;font-size:18px;padding:9px 11px;border:1px solid #2a3566;background:#0e1430;color:#eef2fb;border-radius:4px}
+.discbox{padding:0 18px 16px}
+.discbox textarea{width:100%;min-height:110px;font-size:16.5px;padding:10px;border:1px solid #2a3566;background:#0e1430;color:#eef2fb;border-radius:4px}
+.resultado{border:2px solid #f2b84b;background:#161d3e;border-radius:6px;padding:20px;margin:22px 0;text-align:center}
+.resultado h2{margin:0 0 8px;color:#f2b84b;font-size:26px}
+.resultado .cod{font-family:'Courier New',monospace;font-size:30px;letter-spacing:.14em;background:#0e1430;border:2px dashed #f2b84b;
+  display:inline-block;padding:12px 22px;border-radius:5px;margin:10px 0;color:#f2b84b;font-weight:700}
+.travagab{border:1px solid #2a3566;background:#161d3e;border-radius:5px;padding:18px 20px;margin:20px 0}
+.travagab input{font-family:'Courier New',monospace;text-transform:uppercase;padding:9px 11px;border:1px solid #2a3566;background:#0e1430;
+  color:#eef2fb;border-radius:4px;max-width:170px;font-size:16px}
+.avisoGab{color:#e8564e;font-size:14px;margin-left:8px;font-family:'Courier New',monospace}
+.modelo-disc{border:1px solid #6fcf97;background:rgba(80,190,140,.10);border-radius:5px;padding:14px 16px;margin:8px 18px 16px}
+.modelo-disc b{color:#6fcf97;display:block;margin-bottom:6px;font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+</style>
+</head><body>
+<div class="wrap">
+<header class="top">
+  <h1 class="mast">Praça das Vozes<span class="sub">Kit de Estudo · Ensino Religioso 8º ano · Unidades 4 e 5</span></h1>
+  <div class="faixa"><span>8º ano · Ensino Religioso</span><span>·</span><span>A religião na esfera pública</span><span>·</span><span>Unidades 4 e 5</span></div>
+  <p style="margin:0"><span class="selo">Etapa 2 — Quiz</span></p>
+</header>
+<nav class="abas"><a href="leitura-guiada.html">📖 1. Leitura Guiada</a><a href="quiz.html" class="atual">🎯 2. Quiz</a><a href="resumo.html">🗺️ 3. Resumo</a><a href="simulado.html">📝 4. Simulado</a><a href="index.html">🏠 Início</a></nav>
+
+<div class="painel">
+  <div class="status" id="status">Carregando seu progresso…</div>
+  <div class="btns">
+    <button id="btExportar">📥 Exportar</button>
+    <button id="btImportar">📤 Importar</button>
+    <button id="btZerar">🗑️ Zerar tudo</button>
+  </div>
+</div>
+<input type="file" id="arquivo" accept="application/json" style="display:none">
+
+<div class="progresso"><div class="barra"><i id="barra"></i></div><p id="txtProg"></p></div>
+<p class="aviso-box"><b>10 questões de múltipla escolha</b> para testar o que ficou da leitura. Responda todas e clique em <b>Enviar</b>: aí aparece o código <b>MED-XX-YY</b>. O gabarito comentado só abre com esse código.</p>
+<div id="qs"></div>
+<div class="resultado" id="resultado" style="display:none"></div>
+<div style="text-align:center;margin:22px 0"><button class="principal" id="btEnviar" style="font-size:17px;padding:14px 28px">📤 Enviar respostas</button></div>
+<div class="travagab">
+  <p style="margin:0 0 10px"><b>🔒 Gabarito comentado</b> — digite o código que apareceu depois do envio (ou o código da família) para abrir.</p>
+  <input id="codGab" placeholder="MED-00-XX"><button id="btGab">Abrir gabarito</button><span class="avisoGab" id="avGab"></span>
+</div>
+<div class="rodape"><span>Próximo material →</span><a href="resumo.html">🗺️ Ir para o Resumo</a></div>
+
+</div>
+<div class="overlay" id="overlay"><div class="modal">
+  <h3 id="mTit">Aviso</h3><p id="mTxt"></p>
+  <div class="acoes"><button id="mNao" style="display:none">Cancelar</button>
+  <button class="principal" id="mSim">Entendi</button></div>
+</div></div>
+<script>
+function aviso(t,msg,onSim,comCancelar){
+  document.getElementById('mTit').textContent=t;
+  document.getElementById('mTxt').textContent=msg;
+  document.getElementById('mNao').style.display=comCancelar?'inline-block':'none';
+  var ov=document.getElementById('overlay'); ov.classList.add('on');
+  document.getElementById('mSim').onclick=function(){ov.classList.remove('on'); if(onSim)onSim();};
+  document.getElementById('mNao').onclick=function(){ov.classList.remove('on');};
+}
+</script>
+<script>
+var QS=[{"n": 1, "tipo": "mc", "tag": "Esfera pública", "t": "<p>Dizer que as tradições religiosas atuam na “esfera pública” significa que elas:</p>", "o": [{"id": "a", "txt": "se preocupam também com as questões de interesse de toda a sociedade e com o bem comum.", "ex": "Correto: a esfera pública é o espaço dos assuntos de interesse de todos."}, {"id": "b", "txt": "só se preocupam com o que acontece dentro dos templos.", "ex": "Ao contrário: a esfera pública está fora dos muros do templo."}, {"id": "c", "txt": "proíbem seus fiéis de participar da vida social.", "ex": "As religiões orientam a participação, não a proíbem."}, {"id": "d", "txt": "substituem o governo nas decisões sobre saúde e educação.", "ex": "Elas opinam, mas não tomam o lugar do Estado."}], "c": "a"}, {"n": 2, "tipo": "mc", "tag": "Bem comum", "t": "<p>Muitas tradições religiosas orientam seus seguidores a:</p>", "o": [{"id": "a", "txt": "assumir responsabilidade pelos mais vulneráveis e marginalizados.", "ex": "Correto: é o compromisso com o bem comum."}, {"id": "b", "txt": "cuidar apenas de si mesmos e da própria família.", "ex": "O estudo defende o cuidado com o outro, não só consigo."}, {"id": "c", "txt": "evitar qualquer contato com a sociedade.", "ex": "A orientação é de participação, não de afastamento."}, {"id": "d", "txt": "buscar riqueza acima de tudo.", "ex": "Não corresponde ao estudo."}], "c": "a"}, {"n": 3, "tipo": "mc", "tag": "Tira (Nando Motta)", "t": "<p>Na tira de Nando Motta, a criança mostra ao político o ECA para lembrar que:</p>", "o": [{"id": "a", "txt": "já existe uma lei feita para proteger as crianças, e a religião não deve ser usada como escudo político.", "ex": "Correto: é a crítica ao uso da fé como escudo político."}, {"id": "b", "txt": "as crianças não precisam de proteção nenhuma.", "ex": "A tira defende o contrário: as crianças têm direito à proteção."}, {"id": "c", "txt": "o político é um bom defensor das crianças.", "ex": "A tira critica o político, não o elogia."}, {"id": "d", "txt": "a religião deveria substituir o Estatuto da Criança e do Adolescente.", "ex": "A ideia é justamente que a fé não substitui a lei."}], "c": "a"}, {"n": 4, "tipo": "mc", "tag": "Bento XVI", "t": "<p>Na encíclica Deus caritas est (2005), Bento XVI afirmou que:</p>", "o": [{"id": "a", "txt": "a sociedade justa deve ser realizada pela política, mas a Igreja não pode ficar à margem da luta pela justiça.", "ex": "Correto: a Igreja inspira e cobra justiça; a política realiza."}, {"id": "b", "txt": "a Igreja deve tomar o poder político nas próprias mãos.", "ex": "Ele disse exatamente o contrário."}, {"id": "c", "txt": "a religião não deve se importar com a justiça social.", "ex": "Ele defende que a Igreja não fique à margem da justiça."}, {"id": "d", "txt": "o Estado deve ser governado pelos padres.", "ex": "Não corresponde à encíclica."}], "c": "a"}, {"n": 5, "tipo": "mc", "tag": "Monja Coen", "t": "<p>Para a Monja Coen, a grande mudança do mundo:</p>", "o": [{"id": "a", "txt": "começa pela transformação interna de cada pessoa, que pode ser um “átomo de transformação”.", "ex": "Correto: a revolução, para ela, é primeiro interna."}, {"id": "b", "txt": "depende só dos sistemas políticos e econômicos.", "ex": "Ela diz que sem mudança interna os sistemas não bastam."}, {"id": "c", "txt": "é impossível de acontecer.", "ex": "Ela acredita na transformação, não na impossibilidade."}, {"id": "d", "txt": "não tem nada a ver com as atitudes individuais.", "ex": "Ela liga a mudança justamente às atitudes de cada um."}], "c": "a"}, {"n": 6, "tipo": "mc", "tag": "Caverna", "t": "<p>No exemplo dos meninos presos na caverna (2018), a Monja Coen destacou que eles se salvaram graças:</p>", "o": [{"id": "a", "txt": "à paciência, à perseverança, ao trabalho em conjunto e ao cuidado mútuo.", "ex": "Correto: foi a cooperação que os salvou."}, {"id": "b", "txt": "ao egoísmo de cada um em busca da própria sobrevivência.", "ex": "O egoísmo (“egoico”), segundo ela, teria matado todos."}, {"id": "c", "txt": "à briga pela comida e pelo ar disponível.", "ex": "A briga teria levado à morte, não à salvação."}, {"id": "d", "txt": "ao fato de cada um agir sozinho.", "ex": "Foi o trabalho em conjunto, não a ação isolada."}], "c": "a"}, {"n": 7, "tipo": "mc", "tag": "Formas de ajuda", "t": "<p>Entre as formas de auxílio, a que é um direito garantido pelo Estado é:</p>", "o": [{"id": "a", "txt": "a assistência social.", "ex": "Correto: é política pública, não depende de boa vontade."}, {"id": "b", "txt": "a caridade.", "ex": "A caridade é ajuda por compaixão, não um direito estatal."}, {"id": "c", "txt": "o voluntariado.", "ex": "O voluntariado é doação de tempo e trabalho."}, {"id": "d", "txt": "a ação social de uma igreja.", "ex": "A ação social é organizada por um grupo, não garantida pelo Estado."}], "c": "a"}, {"n": 8, "tipo": "mc", "tag": "Tira (Genildo Ronchi)", "t": "<p>A tira de Genildo Ronchi, com pessoas em situação de rua sob um viaduto, denuncia a negação do direito:</p>", "o": [{"id": "a", "txt": "à moradia e à dignidade.", "ex": "Correto: é o direito social à moradia e à dignidade."}, {"id": "b", "txt": "ao voto.", "ex": "Não é o tema da tira."}, {"id": "c", "txt": "ao lazer.", "ex": "Não é o tema da tira."}, {"id": "d", "txt": "à liberdade religiosa.", "ex": "Não é o tema da tira."}], "c": "a"}, {"n": 9, "tipo": "mc", "tag": "Milton Santos", "t": "<p>Milton Santos chamou de “globalização perversa” o mundo atual porque ele:</p>", "o": [{"id": "a", "txt": "produz desigualdade, desemprego, pobreza e fome, já que as conquistas da ciência e da técnica não são bem usadas.", "ex": "Correto: é o uso injusto das conquistas técnicas."}, {"id": "b", "txt": "acabou completamente com a pobreza no mundo.", "ex": "O contrário: ela produz pobreza."}, {"id": "c", "txt": "distribuiu de forma justa a riqueza entre todos os países.", "ex": "Ela amplia as desigualdades, não as elimina."}, {"id": "d", "txt": "proibiu o uso da tecnologia.", "ex": "O problema não é a tecnologia, e sim o uso dela."}], "c": "a"}, {"n": 10, "tipo": "mc", "tag": "Pecado social", "t": "<p>Segundo o Papa João Paulo II, é “pecado social” todo pecado cometido:</p>", "o": [{"id": "a", "txt": "contra os direitos da pessoa humana, a dignidade do próximo e o bem comum.", "ex": "Correto: a injustiça contra o outro também é pecado."}, {"id": "b", "txt": "apenas dentro das igrejas.", "ex": "Não corresponde ao documento."}, {"id": "c", "txt": "somente por governos, nunca por pessoas.", "ex": "O documento fala de pecado contra os direitos da pessoa, cometido por qualquer um."}, {"id": "d", "txt": "que não prejudica ninguém.", "ex": "O pecado social é justamente o que fere direitos e o bem comum."}], "c": "a"}];
+var SEMENTE=1102655;var PREF='MED';var PAISCOD='PAIS-77';var TEMDISC=false;var MONO="'Courier New',monospace";
+
+var KEY='er8sj_esferapublica_v1_quiz_v1'; var mem={};
+function ler(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return mem}}
+function gravar(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){mem=s}carimbo();}
+function carimbo(){
+  var d=new Date();
+  var f=d.toLocaleDateString('pt-BR')+' \u00e0s '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  S.quando=f;
+  try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){mem=S}
+  var el=document.getElementById('status'); if(el)el.textContent='\uD83D\uDCBE Salvo automaticamente \u2014 \u00faltima vez: '+f;
+}
+function ligarPainel(){
+  document.getElementById('btExportar').onclick=function(){
+    var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='quiz-ensino-religioso8-esfera-publica.json'; a.click();
+  };
+  document.getElementById('btImportar').onclick=function(){document.getElementById('arquivo').click();};
+  document.getElementById('arquivo').onchange=function(e){
+    var f=e.target.files[0]; if(!f)return; var r=new FileReader();
+    r.onload=function(){ try{ S=normaliza(JSON.parse(r.result)); gravar(S); render();
+        aviso('Pronto','Seu progresso foi importado com sucesso.');
+      }catch(err){ aviso('Ops','N\u00e3o consegui ler esse arquivo. Ele precisa ser o .json exportado por este material.'); } };
+    r.readAsText(f);
+  };
+  document.getElementById('btZerar').onclick=function(){
+    aviso('Zerar tudo?','Isso apaga tudo o que foi respondido nesta p\u00e1gina. N\u00e3o d\u00e1 para desfazer.',function(){
+      S=normaliza({}); gravar(S); render(); },true);
+  };
+}
+
+
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);
+  t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
+function embaralha(arr,semente){
+  var r=mulberry32(semente),a=arr.slice();
+  for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+  return a;
+}
+function codigo(pref,acertos,semente){
+  var L='ABCDEFGHJKLMNPQRSTUVWXYZ', r=mulberry32(semente*7919+13);
+  var y=L[Math.floor(r()*L.length)]+L[Math.floor(r()*L.length)];
+  var n=(acertos<10?'0':'')+acertos;
+  return pref+'-'+n+'-'+y;
+}
+
+
+function normaliza(d){d=d||{};if(!d.resp)d.resp={};if(d.enviado===undefined)d.enviado=false;
+  if(d.liberado===undefined)d.liberado=false;if(!d.codigo)d.codigo='';return d;}
+var S=normaliza(ler());
+var ORDEM={};
+QS.forEach(function(q){
+  if(q.tipo==='mc'||q.tipo==='rom'){ ORDEM[q.n]=embaralha(q.o,SEMENTE+q.n*101); }
+});
+function acertou(q){
+  var r=S.resp[q.n];
+  if(q.tipo==='disc')return false;
+  if(q.tipo==='som')return r!==undefined&&r!==''&&parseInt(r,10)===q.soma;
+  return r===q.c;
+}
+function totalObj(){var t=0;QS.forEach(function(q){if(q.tipo!=='disc')t++;});return t;}
+function acertos(){var a=0;QS.forEach(function(q){if(acertou(q))a++;});return a;}
+function letra(i){return 'abcdefgh'[i];}
+function render(){
+  var alvo=document.getElementById('qs');alvo.innerHTML='';
+  QS.forEach(function(q){
+    var sec=document.createElement('section');sec.className='q';
+    var h='<div class="cabq"><span class="nq">'+(q.tipo==='disc'?'DISCURSIVA':'Quest\u00e3o '+q.n)+'</span>'+
+      (q.tag?'<span class="tag">'+q.tag+'</span>':'')+(q.val?'<span class="val">'+q.val+'</span>':'')+'</div>';
+    h+='<div class="enun">'+q.t+'</div>';
+    if(q.tipo==='som'){
+      h+='<div class="enun"><ul class="afirm">';
+      q.itens.forEach(function(it){h+='<li><b>'+it.v+'</b> \u2014 '+it.txt+'</li>';});
+      h+='</ul></div><div class="somin"><label for="s'+q.n+'">Soma correta:</label>'+
+        '<input id="s'+q.n+'" type="number" min="0" max="31" data-n="'+q.n+'" class="inSom" value="'+
+        (S.resp[q.n]!==undefined?S.resp[q.n]:'')+'" '+(S.enviado?'disabled':'')+'></div>';
+    } else if(q.tipo==='disc'){
+      h+='<div class="discbox"><textarea data-n="'+q.n+'" class="inDisc" '+(S.enviado?'readonly':'')+
+        ' placeholder="Escreva sua resposta aqui\u2026">'+((S.resp[q.n]||'').replace(/</g,'&lt;'))+'</textarea></div>';
+    } else {
+      var ord=ORDEM[q.n];
+      h+='<ul class="alts">';
+      ord.forEach(function(op,i){
+        var cls='',ex='';
+        var marcada=(S.resp[q.n]===op.id);
+        if(S.liberado){
+          cls=(op.id===q.c)?'certa':'errada';
+          ex='<p class="expl'+(op.id===q.c?' boa':'')+'">'+(op.id===q.c?'\u2705 ':'\u274C ')+op.ex+'</p>';
+        }
+        if(marcada&&!S.liberado)cls+=' marcada';
+        h+='<li><label class="'+cls+'"><input type="radio" name="q'+q.n+'" value="'+op.id+'" data-n="'+q.n+
+           '" class="inMc" '+(marcada?'checked':'')+' '+(S.enviado?'disabled':'')+'>'+
+           '<span class="letra">'+letra(i)+')</span><span>'+op.txt+'</span></label>'+ex+'</li>';
+      });
+      h+='</ul>';
+    }
+    if(S.liberado&&q.tipo==='som'){
+      h+='<div class="modelo-disc"><b>Gabarito comentado</b>Soma correta: <b>'+q.soma+'</b>. '+q.expl+'</div>';
+    }
+    if(S.liberado&&q.tipo==='disc'){
+      h+='<div class="modelo-disc"><b>Resposta modelo \u2014 para corrigir junto</b>'+q.modelo+'</div>';
+    }
+    sec.innerHTML=h;alvo.appendChild(sec);
+  });
+  ligarQ(); pintaProg(); painelResultado();
+}
+function pintaProg(){
+  var c=0;QS.forEach(function(q){var r=S.resp[q.n];if(r!==undefined&&r!=='')c++;});
+  document.getElementById('barra').style.width=(c/QS.length*100)+'%';
+  document.getElementById('txtProg').textContent=c+' de '+QS.length+' quest\u00f5es respondidas.';
+  var bt=document.getElementById('btEnviar'); if(bt)bt.disabled=S.enviado||(c<QS.length);
+}
+function ligarQ(){
+  document.querySelectorAll('.inMc').forEach(function(el){
+    el.addEventListener('change',function(){S.resp[el.dataset.n]=el.value;gravar(S);pintaProg();
+      el.closest('.alts').querySelectorAll('label').forEach(function(l){l.classList.remove('marcada');});
+      el.closest('label').classList.add('marcada');});
+  });
+  document.querySelectorAll('.inSom').forEach(function(el){
+    el.addEventListener('input',function(){S.resp[el.dataset.n]=el.value;gravar(S);pintaProg();});
+  });
+  document.querySelectorAll('.inDisc').forEach(function(el){
+    el.addEventListener('input',function(){S.resp[el.dataset.n]=el.value;gravar(S);pintaProg();});
+  });
+}
+function painelResultado(){
+  var box=document.getElementById('resultado');
+  if(!S.enviado){box.style.display='none';return;}
+  box.style.display='block';
+  var a=acertos(),t=totalObj();
+  box.innerHTML='<h2>\uD83D\uDCCB Respostas enviadas</h2>'+
+    '<p>C\u00f3digo de libera\u00e7\u00e3o para os pais:</p><div class="cod">'+S.codigo+'</div>'+
+    '<p style="font-family:'+MONO+';font-size:13px">Os dois n\u00fameros do meio s\u00e3o a quantidade de acertos (de '+t+' objetivas).'+
+    (TEMDISC?' A discursiva n\u00e3o entra na contagem \u2014 a resposta modelo est\u00e1 no gabarito.':'')+'</p>';
+}
+document.getElementById('btEnviar').onclick=function(){
+  var falta=0;QS.forEach(function(q){var r=S.resp[q.n];if(r===undefined||r==='')falta++;});
+  if(falta){aviso('Falta pouco','Ainda h\u00e1 '+falta+' quest\u00e3o(\u00f5es) sem resposta. Responda todas antes de enviar.');return;}
+  aviso('Enviar respostas?','Depois de enviar n\u00e3o d\u00e1 mais para mudar as respostas. O c\u00f3digo de libera\u00e7\u00e3o vai aparecer na tela.',function(){
+    S.enviado=true; S.codigo=codigo(PREF,acertos(),SEMENTE); gravar(S); render();
+    document.getElementById('resultado').scrollIntoView({behavior:'smooth',block:'center'});
+  },true);
+};
+document.getElementById('btGab').onclick=function(){
+  var v=(document.getElementById('codGab').value||'').trim().toUpperCase();
+  if(S.enviado&&(v===S.codigo||v===PAISCOD)){S.liberado=true;gravar(S);render();
+    document.getElementById('qs').scrollIntoView({behavior:'smooth'});}
+  else if(!S.enviado){document.getElementById('avGab').textContent=' \u274C Envie as respostas primeiro.';}
+  else{document.getElementById('avGab').textContent=' \u274C C\u00f3digo incorreto.';}
+};
+ligarPainel(); render(); carimbo();
+
+</script>
+</body></html>
